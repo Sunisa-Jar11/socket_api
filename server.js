@@ -23,6 +23,7 @@ io.on('connection', client => {
     client.on('login', function (data) {
         console.log('a user ' + data + ' connected');
         users.push(data); 
+        console.log('users',users)
         io.sockets.emit('datalist', users)
     });
 
@@ -30,6 +31,7 @@ io.on('connection', client => {
     client.on('disconnect', () => {
         console.log('user disconnected')
         users.splice(users.indexOf(client), 1);
+        console.log('users',users)
     })
 
     // ส่งข้อมูลไปยัง Client ทุกตัวที่เขื่อมต่อแบบ Realtime
